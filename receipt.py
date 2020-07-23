@@ -1,0 +1,46 @@
+from tkinter import *
+
+file = open("receipt.txt", "r")
+list1 = file.readlines()
+p = []
+try:
+    p = '''
+    NAME - %s
+    MOBILE NO - %s
+    ROOM NUMBER - %s
+    TOTAL BILL - Rs %s
+    ''' % (list1[0], list1[1], list1[2], list1[3])
+except IndexError:
+    print("Empty")
+
+
+class Hotel_Management_Reciept:
+    def __init__(self):
+        root = Tk()
+        '''This class configures and populates the toplevel window.
+           top is the toplevel containing window.'''
+        _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
+        _fgcolor = '#000000'  # X11 color: 'black'
+        _compcolor = '#d9d9d9'  # X11 color: 'gray85'
+        _ana1color = '#d9d9d9'  # X11 color: 'gray85'
+        _ana2color = '#d9d9d9'  # X11 color: 'gray85'
+
+        root.geometry("800x800")
+        root.title("Reciept")
+        root.configure(background="#d9d9d9")
+
+        self.Label1 = Label(root)
+        self.Label1.configure(background="#d9d9d9")
+        self.Label1.place(relx=0, rely=0, height=800, width=800)
+        self.Label1.configure(disabledforeground="#a3a3a3")
+        self.Label1.configure(foreground="#000000")
+        self.Label1.configure(text=p)
+        self.Label1.configure(anchor=N)
+        self.Label1.configure(wraplength=1000)
+        self.Label1.configure(justify=LEFT)
+        self.Label1.configure(width=582)
+        root.mainloop()
+
+
+if __name__ == '__main__':
+    reciept1 = Hotel_Management_Reciept()
